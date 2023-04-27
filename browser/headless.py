@@ -14,4 +14,7 @@ class Headless:
         """
         chrome_options = Options()
         chrome_options.add_argument("--headless")
-        return webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver.implicitly_wait(15)
+        driver.set_page_load_timeout(15)
+        return driver
