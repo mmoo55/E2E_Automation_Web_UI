@@ -11,7 +11,7 @@ class Browser:
     def __init__(self):
         self.driver = None
 
-    def seleccionar_navegador(self, navigator: str = "Chrome"):
+    def seleccionar_navegador(self, navigator: str = "chrome"):
         """
         Permite elegir el navegador con el cual se realizara las pruebas puede ser Chrome, Firefox, Edge y Safari.
         Además de el modo Headless, que nos sirve para realizar las pruebas sin mostrar interfaz gráfica y asi
@@ -21,15 +21,15 @@ class Browser:
         :return:
         """
         try:
-            if navigator == "Chrome":
+            if navigator.lower() == "chrome":
                 self.driver = Chrome().iniciar_chrome()
-            elif navigator == "Firefox":
+            elif navigator.lower() == "firefox":
                 self.driver = Firefox().iniciar_firefox()
-            elif navigator == "Edge":
+            elif navigator.lower() == "edge":
                 self.driver = Edge().iniciar_edge()
-            elif navigator == "Safari":
+            elif navigator.lower() == "safari":
                 self.driver = webdriver.Safari()
-            elif navigator == "Headless":
+            elif navigator.lower() == "headless":
                 self.driver = Headless().iniciar_headless()
             self.vars = {}
             return self.driver
