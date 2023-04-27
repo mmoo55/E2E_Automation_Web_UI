@@ -11,4 +11,7 @@ class Chrome:
         Abre el navegador Chrome
         :return: webdriver
         """
-        return webdriver.Chrome()
+        driver = webdriver.Chrome()
+        driver.implicitly_wait(15)
+        driver.set_page_load_timeout(15)
+        return driver
