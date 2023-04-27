@@ -18,11 +18,10 @@ class PurchaseProjectTest(TestBase):
 
         # FIRST PRODUCT
         self.home_section.get_product(product_one).click()
-        self.assertEquals(self.product_section.get_product(product_one).get_text(), product_one, "ERROR! the product is different")
+        self.assertEqual(self.product_section.get_product(product_one).get_text(), product_one, "ERROR! the product is different")
         self.product_section.add_to_cart_button.click()
-        #####################
-        sleep(1)
-        self.assertEquals(self.browser.get_text_alert(), "Product added", "ERROR! the product was not added")
+        self.browser.wait_alert_is_not_in_the_page()
+        self.assertEqual(self.browser.get_text_alert(), "Product added", "ERROR! the product was not added")
         self.browser.accept_alert()
 
         # BACK TO HOME
@@ -30,19 +29,18 @@ class PurchaseProjectTest(TestBase):
 
         # SECOND PRODUCT
         self.home_section.get_product(product_two).click()
-        self.assertEquals(self.product_section.get_product(product_two).get_text(), product_two, "ERROR! the product is different")
+        self.assertEqual(self.product_section.get_product(product_two).get_text(), product_two, "ERROR! the product is different")
         self.product_section.add_to_cart_button.click()
-        ###################
-        sleep(1)
-        self.assertEquals(self.browser.get_text_alert(), "Product added", "ERROR! the product was not added")
+        self.browser.wait_alert_is_not_in_the_page()
+        self.assertEqual(self.browser.get_text_alert(), "Product added", "ERROR! the product was not added")
         self.browser.accept_alert()
 
         # GO TO CART SECTION
         self.menu_section.cart_label.click()
 
         # CART SECTION
-        self.assertEquals(self.cart_section.get_product(product_one).get_text(), product_one, "ERROR! the product is not in the cart")
-        self.assertEquals(self.cart_section.get_product(product_two).get_text(), product_two, "ERROR! the product is not in the cart")
+        self.assertEqual(self.cart_section.get_product(product_one).get_text(), product_one, "ERROR! the product is not in the cart")
+        self.assertEqual(self.cart_section.get_product(product_two).get_text(), product_two, "ERROR! the product is not in the cart")
         self.cart_section.place_order_button.click()
 
         # MODAL FORM SECTION
@@ -55,5 +53,5 @@ class PurchaseProjectTest(TestBase):
         self.modal_form_section.purchase_button.click()
 
         # MODAL CONFIRM SECTION
-        self.assertEquals(self.modal_confirm_section.confirm_message_label.get_text(), "Thank you for your purchase!", "ERROR! the purchase failed")
+        self.assertEqual(self.modal_confirm_section.confirm_message_label.get_text(), "Thank you for your purchase!", "ERROR! the purchase failed")
         self.modal_confirm_section.ok_button.click()

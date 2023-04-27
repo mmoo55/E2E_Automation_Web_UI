@@ -1,8 +1,8 @@
 import unittest
 
 from browser.Browser import Browser
-from os import getenv
-from dotenv import load_dotenv
+#from os import getenv
+#from dotenv import load_dotenv
 
 from page.HomeSection import HomeSection
 from page.CartSection import CartSection
@@ -21,7 +21,6 @@ class TestBase(unittest.TestCase):
 
         self.driver = self.browser.get_driver()
         self.driver.implicitly_wait(15)
-#        self.driver.page_load_timeout(15)
 
         self.cart_section = CartSection(self.driver)
         self.home_section = HomeSection(self.driver)

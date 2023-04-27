@@ -1,6 +1,4 @@
-import chromedriver_autoinstaller
 from selenium import webdriver
-from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
@@ -56,3 +54,7 @@ class Browser:
 
     def get_text_alert(self):
         return self.driver.switch_to.alert.text
+
+    def wait_alert_is_not_in_the_page(self):
+        explicit_wait = WebDriverWait(self.driver, 10)
+        explicit_wait.until(EC.alert_is_present())
