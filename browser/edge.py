@@ -11,4 +11,7 @@ class Edge:
         Abre el navegador Edge
         :return: webdriver
         """
-        return webdriver.Edge()
+        driver = webdriver.Edge()
+        driver.implicitly_wait(15)
+        driver.set_page_load_timeout(15)
+        return driver
