@@ -11,4 +11,7 @@ class Firefox:
         Abre el navegador Firefox
         :return: webdriver
         """
-        return webdriver.Firefox()
+        driver = webdriver.Firefox()
+        driver.implicitly_wait(15)
+        driver.set_page_load_timeout(15)
+        return driver
